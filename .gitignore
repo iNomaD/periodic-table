@@ -61,3 +61,21 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories
+.classpath
+.idea
+.project
+.settings
+.metadata
+
+# NetBeans specific files/directories
+.nbattrs

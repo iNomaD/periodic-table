@@ -8,6 +8,11 @@ public class PeriodicElement {
     private int atomicNumber;
     private String elementName;
     private String symbol;
+    private String definition;
+
+    public PeriodicElement(String elementName){
+        this.elementName = elementName;
+    }
 
     public PeriodicElement(int atomicNumber, String elementName, String symbol) {
         this.atomicNumber = atomicNumber;
@@ -37,6 +42,14 @@ public class PeriodicElement {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
     }
 
     public String toString(){

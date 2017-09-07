@@ -1,8 +1,5 @@
 package fi.jyu.periodictable;
 
-import net.webservicex.Periodictable;
-import net.webservicex.PeriodictableSoap;
-
 import java.util.List;
 
 /**
@@ -14,7 +11,13 @@ public class client {
         System.out.println("Hello!");
 
         try {
-            List<PeriodicElement> list = PeriodicTableResponseParser.getElements();
+            List<PeriodicElement> list = ServiceResponseProcessor.getElements();
+            for(PeriodicElement element : list){
+                ServiceResponseProcessor.fillElement(element);
+                ServiceResponseProcessor.defineElement(element);
+                System.out.println(element);
+                System.out.println(element.getDefinition());
+            }
         }
         catch (Exception e){
             e.printStackTrace();

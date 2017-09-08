@@ -2,6 +2,10 @@ h1{
     text-align: center;
 }
 
+h3{
+    text-align: center;
+}
+
 .text{
     color: #d3441f;
     font-size: 15pt;
@@ -48,4 +52,48 @@ h1{
 .myButton:active {
     position:relative;
     top:1px;
+}
+
+#wrap{
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: rgba(1, 1, 1, 0.725);
+    z-index: 100;
+    overflow: auto;
+}
+
+#window{
+    width: 400px;
+    height: 420px;
+    margin: 50px auto;
+    display: none;
+    background: #fff;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+}
+
+.close{
+    float: left;
+    margin-left: 344px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#elementDescription {
+    width: 400px;
+    height: 330px;
+    background: #fff;
+    border: 1px solid #C1C1C1;
+    overflow: auto;
 }

@@ -21,9 +21,18 @@
         List<PeriodicElement> list = ServiceResponseProcessor.getElements();
         for(PeriodicElement e : list){
             %>
-            <button class="myButton"><span class="text"><%= e.getElementName() %></span></button>
+            <button class="myButton" onclick="loadElement('<%= e.getElementName() %>')"><span class="text"><%= e.getElementName() %></span></button>
             <%
         }
     %>
+
+    <div onclick="show('none')" id="wrap"></div>
+
+    <div id="window">
+        <img class="close" onclick="show('none')" src="images/close.png">
+        <h3 id="elementTitle"></h3>
+        <div id="elementDescription"></div>
+    </div>
+
   </body>
 </html>

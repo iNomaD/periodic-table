@@ -72,7 +72,6 @@ atlassian-ide-plugin.xml
 
 # Eclipse specific files/directories
 .classpath
-.idea
 .project
 .settings
 .metadata

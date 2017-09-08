@@ -12,8 +12,18 @@ function changeInfo(title, description){
     document.getElementById("elementDescription").innerHTML = description;
 }
 
-function loadElement(name){
+function loadElement(elementName){
     changeInfo("loading...", "loading...");
     show('block');
+    var q_str = 'elementName='+elementName;
+    doAjax('PeriodicTableServlet',q_str,'doQuery_back','post',0);
+}
 
+function doQuery_back(result)
+{
+    result = JSON.parse(result);
+    var atomicNumber = result.atomicNumber;
+    var symbol = result.symbol;
+    var definition = result.definition;
+    changeInfo(symbol+" ["+atomicNumber+"]", definition);
 }

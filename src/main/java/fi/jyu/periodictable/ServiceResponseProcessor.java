@@ -48,7 +48,24 @@ public class ServiceResponseProcessor {
         return periodicElementList;
     }
 
-    private static PeriodicElement getElementInfo(String element) throws Exception{
+    private static String getElementDefinition(String element) throws Exception{
+        DictService dictService = new DictService();
+        DictServiceSoap dictServiceSoap = dictService.getDictServiceSoap();
+        WordDefinition definitionResponse = dictServiceSoap.define(element);
+        ArrayOfDefinition arrayOfDefinition = definitionResponse.getDefinitions();
+        String response;
+        if(arrayOfDefinition.getDefinition().size() > 0) {
+            Definition firstDefinition = arrayOfDefinition.getDefinition().get(0);
+            Dictionary d = firstDefinition.getDictionary();
+            response = firstDefinition.getWord() + " => " + firstDefinition.getWordDefinition().trim() + "[" + d.getName().trim() + "]";
+        }
+        else{
+            response = "No definition found.";
+        }
+        return response;
+    }
+
+    public static PeriodicElement getElementInfo(String element) throws Exception{
         Periodictable periodictable = new Periodictable();
         PeriodictableSoap periodictableSoap = periodictable.getPeriodictableSoap();
         String infoResponse = periodictableSoap.getAtomicNumber(element);
@@ -58,24 +75,6 @@ public class ServiceResponseProcessor {
         int atomicNumber = Integer.parseInt(elementInfo.getElementsByTagName("AtomicNumber").item(0).getTextContent());
         String symbol = elementInfo.getElementsByTagName("Symbol").item(0).getTextContent();
         return new PeriodicElement(atomicNumber, element, symbol);
-    }
-
-    private static String getElementDefinition(String element) throws Exception{
-        DictService dictService = new DictService();
-        DictServiceSoap dictServiceSoap = dictService.getDictServiceSoap();
-        WordDefinition definitionResponse = dictServiceSoap.define(element);
-        ArrayOfDefinition arrayOfDefinition = definitionResponse.getDefinitions();
-        Definition firstDefinition = arrayOfDefinition.getDefinition().get(0);
-        Dictionary d = firstDefinition.getDictionary();
-        String response = firstDefinition.getWord()+" => "+firstDefinition.getWordDefinition().trim() + "[" + d.getName().trim() + "]";
-        return response;
-    }
-
-    public static void fillElement(PeriodicElement element) throws Exception{
-        String name = element.getElementName();
-        PeriodicElement info = getElementInfo(name);
-        element.setAtomicNumber(info.getAtomicNumber());
-        element.setSymbol(info.getSymbol());
     }
 
     public static void defineElement(PeriodicElement element) throws Exception{

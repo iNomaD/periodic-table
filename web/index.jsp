@@ -12,6 +12,7 @@
   <head>
     <title>Periodic Table</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type='text/javascript' src='scripts/AJAXlib.js'></script>
     <script type='text/javascript' src='scripts/script.js'></script>
   </head>
 

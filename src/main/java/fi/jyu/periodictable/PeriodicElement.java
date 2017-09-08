@@ -20,6 +20,11 @@ public class PeriodicElement {
         this.symbol = symbol;
     }
 
+    public PeriodicElement(int atomicNumber, String elementName, String symbol, String definition) {
+        this(atomicNumber, elementName, symbol);
+        this.definition = definition;
+    }
+
     public int getAtomicNumber() {
         return atomicNumber;
     }
@@ -54,5 +59,16 @@ public class PeriodicElement {
 
     public String toString(){
         return symbol+"["+atomicNumber+"]"+elementName;
+    }
+
+    public String toJSON(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append("\"atomicNumber\":"+atomicNumber+",");
+        sb.append("\"elementName\":\""+elementName+"\",");
+        sb.append("\"symbol\":\""+symbol+"\",");
+        sb.append("\"definition\":\""+definition.replace("\"", "'").replace("\n", " ").replace("\\","/")+"\"");
+        sb.append("}");
+        return sb.toString();
     }
 }
